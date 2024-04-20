@@ -14,10 +14,10 @@ public class SerialWriter implements Runnable{
 
     public void run() {
         try {
-            int c = 0;
-            while ((c = System.in.read()) > -1) {
-                this.out.write(c);
-            }
+            // 시리얼 포트로 데이터 요청 전송
+            String requestData = "Your request data"; // 요청할 데이터
+            byte[] requestDataBytes = requestData.getBytes(); // 요청 데이터를 바이트 배열로 변환
+            this.out.write(requestDataBytes); // 시리얼 포트로 요청 데이터 전송
         } catch (IOException e) {
             e.printStackTrace();
         }
